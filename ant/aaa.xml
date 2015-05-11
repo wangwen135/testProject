@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+
+<project name="test" default="targetB" basedir="./..">
+
+	<property name="builddir" value="dd" />
+	<property file="foo.properties" />
+
+	<property name="dist" value="dist" />
+
+	<property environment="evn" />
+	<path id="testPath">
+		<dirset dir="src">
+			<include name="*/classes" />
+			<exclude name="*/*Test*" />
+		</dirset>
+
+		<filelist dir="configuration" files="EDI.properties" />
+	</path>
+
+	<target name="tt">
+
+
+		<echo>asdf</echo>
+		<echo>${builddir}</echo>
+		<echo>$${builddir}=${builddir}</echo>
+		<echo>${book}</echo>
+
+		<echo>${evn.JAVA_HOME}</echo>
+
+		<echo>${dist}</echo>
+		<mkdir dir="${dist}" />
+		<echo>创建目录${dist}完成</echo>
+
+		<jar destfile="${dist}/test.jar" basedir="config">
+		</jar>
+	</target>
+
+	<target name="targetA" depends="tt" if="ant.java.version">
+		<echo message="Java Version: ${ant.java.version}" />
+	</target>
+
+	<target name="targetB" depends="targetA" unless="amigo">
+		<description>
+			a depend example!
+		</description>
+		<echo message="The base dir is: ${basedir}" />
+		
+		<copy file="${dist}/test.jar" tofile ="${dist}/abc.jar" />
+		
+		<delete file="${dist}/abc.jar"></delete>
+		
+		<mkdir dir="${dist}/dirs"/>
+		
+		<move file="${dist}/test.jar" todir="${dist}/dirs"/>
+	</target>
+</project>
+

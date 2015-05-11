@@ -1,0 +1,456 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- edited with XMLSpy v2008 sp1 (http://www.altova.com) by sunpei (EMBRACE) -->
+<xs:schema xmlns:exp="http://www.chinaport.gov.cn/exp"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ds="http://www.w3.org/2000/09/xmldsig#"
+	targetNamespace="http://www.chinaport.gov.cn/exp" elementFormDefault="qualified"
+	attributeFormDefault="unqualified">
+	<xs:include schemaLocation="common.xsd" />
+	<xs:element name="Package">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="exp:EnvelopInfo" />
+				<xs:element name="DataInfo">
+					<xs:annotation>
+						<xs:documentation>业务内容</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="SignedData">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Data">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element ref="exp:EXP306" />
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:sequence>
+											<xs:element name="HashSign" type="xs:string" />
+											<xs:element name="SignerInfo" type="xs:string" />
+										</xs:sequence>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="EXP306">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="DutyFormHead">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="OpType" type="xs:string">
+								<xs:annotation>
+									<xs:documentation>操作类型
+										0 取消汇总纳税
+										1 汇总纳税
+									</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="TaxEntryId">
+								<xs:annotation>
+									<xs:documentation>税单海关编号</xs:documentation>
+								</xs:annotation>
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="18" />
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="DutyFormFlag" type="xs:string">
+								<xs:annotation>
+									<xs:documentation>税单标志
+										"N"为正常税单;"M"-手工税单;"F"-罚没收入;"T"船舶吨税;"A"非贸物品税单;"Z"转关滞报;"C"舱单滞报
+									</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="IEPort">
+								<xs:annotation>
+									<xs:documentation>进出口岸代码
+									</xs:documentation>
+								</xs:annotation>
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="4" />
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="DeclPort">
+								<xs:annotation>
+									<xs:documentation>申报口岸代码
+									</xs:documentation>
+								</xs:annotation>
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="4" />
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="PayerCode">
+								<xs:annotation>
+									<xs:documentation>缴款单位编码
+									</xs:documentation>
+								</xs:annotation>
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="10" />
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="PayerName">
+								<xs:annotation>
+									<xs:documentation>缴款单位名称
+									</xs:documentation>
+								</xs:annotation>
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="255" />
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="OwnerCode">
+								<xs:annotation>
+									<xs:documentation>货主单位代码
+									</xs:documentation>
+								</xs:annotation>
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="10" />
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="OwnerName">
+								<xs:annotation>
+									<xs:documentation>货主单位名称
+									</xs:documentation>
+								</xs:annotation>
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="255" />
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="TradeCode">
+								<xs:annotation>
+									<xs:documentation>经营单位代码
+									</xs:documentation>
+								</xs:annotation>
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="10" />
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="TradeName">
+								<xs:annotation>
+									<xs:documentation>经营单位名称
+									</xs:documentation>
+								</xs:annotation>
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="255" />
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="AgentCode">
+								<xs:annotation>
+									<xs:documentation>申报单位代码
+									</xs:documentation>
+								</xs:annotation>
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="10" />
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="AgentName">
+								<xs:annotation>
+									<xs:documentation>申报单位名称
+									</xs:documentation>
+								</xs:annotation>
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="255" />
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="DDate">
+								<xs:annotation>
+									<xs:documentation>申报日期
+									</xs:documentation>
+								</xs:annotation>
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="17" />
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="DutyFormList" maxOccurs="unbounded">
+					<xs:annotation>
+						<xs:documentation>报关单表头信息</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:annotation>
+							<xs:documentation>税单列表</xs:documentation>
+						</xs:annotation>
+						<xs:sequence>
+							<xs:element name="TaxID">
+								<xs:annotation>
+									<xs:documentation>税单序号</xs:documentation>
+								</xs:annotation>
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:minLength value="1" />
+										<xs:maxLength value="2" />
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="DelayMark">
+								<xs:annotation>
+									<xs:documentation>滞报、滞纳标志
+
+										"0"-税单;
+										"1"-滞纳金;
+										"2"-滞报金
+									</xs:documentation>
+								</xs:annotation>
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="1" />
+										<xs:minLength value="0" />
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="DutyFlag">
+								<xs:annotation>
+									<xs:documentation>退补税标志
+
+										“-”正常税单;
+										“/”补税税单;
+										“#”退税税单;
+										“D”作废税单
+									</xs:documentation>
+								</xs:annotation>
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:minLength value="0" />
+										<xs:maxLength value="1" />
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="DutyFlagNote">
+								<xs:annotation>
+									<xs:documentation>退补税原因
+									</xs:documentation>
+								</xs:annotation>
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:minLength value="0" />
+										<xs:maxLength value="1" />
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="TaxType">
+								<xs:annotation>
+									<xs:documentation>税费种类
+
+										A 进口关税
+										I 反倾销税
+										L 进口增值税
+										Y 进口消费税
+										O 废旧基金
+										J 反补贴税
+									</xs:documentation>
+								</xs:annotation>
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:minLength value="0" />
+										<xs:maxLength value="1" />
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="RealTax">
+								<xs:annotation>
+									<xs:documentation>DECIMAL(19, 2)
+										税款金额
+									</xs:documentation>
+								</xs:annotation>
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:minLength value="0" />
+										<xs:maxLength value="20" />
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="PLimit">
+								<xs:annotation>
+									<xs:documentation>缴款期限
+									</xs:documentation>
+								</xs:annotation>
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:minLength value="0" />
+										<xs:maxLength value="17" />
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="GenDate">
+								<xs:annotation>
+									<xs:documentation>税单生成时间
+									</xs:documentation>
+								</xs:annotation>
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:minLength value="0" />
+										<xs:maxLength value="17" />
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="EntryList" maxOccurs="unbounded">
+					<xs:annotation>
+						<xs:documentation>报关单表体信息</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="EntryId">
+								<xs:annotation>
+									<xs:documentation>报关单海关编号</xs:documentation>
+								</xs:annotation>
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:length value="18" />
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="GNo">
+								<xs:annotation>
+									<xs:documentation>商品序号
+									</xs:documentation>
+								</xs:annotation>
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:minLength value="1" />
+										<xs:maxLength value="19" />
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="CodeTS">
+								<xs:annotation>
+									<xs:documentation>商品编号
+									</xs:documentation>
+								</xs:annotation>
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:minLength value="0" />
+										<xs:maxLength value="16" />
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="GName">
+								<xs:annotation>
+									<xs:documentation>商品名称
+									</xs:documentation>
+								</xs:annotation>
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:minLength value="0" />
+										<xs:maxLength value="255" />
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="RealDuty">
+								<xs:annotation>
+									<xs:documentation>DECIMAL(19, 4)
+										实征关税额
+									</xs:documentation>
+								</xs:annotation>
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:minLength value="0" />
+										<xs:maxLength value="20" />
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="RealTax">
+								<xs:annotation>
+									<xs:documentation>DECIMAL(19, 4)
+										实征增值税额
+									</xs:documentation>
+								</xs:annotation>
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:minLength value="0" />
+										<xs:maxLength value="20" />
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="RealReg">
+								<xs:annotation>
+									<xs:documentation>DECIMAL(19, 4)
+										实征消费税额
+									</xs:documentation>
+								</xs:annotation>
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:minLength value="0" />
+										<xs:maxLength value="20" />
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="RealAnti">
+								<xs:annotation>
+									<xs:documentation>DECIMAL(19, 4)
+										实征反倾销税额
+									</xs:documentation>
+								</xs:annotation>
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:minLength value="0" />
+										<xs:maxLength value="20" />
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="RealRsv1">
+								<xs:annotation>
+									<xs:documentation>DECIMAL(19, 4)
+										实征反补贴税款
+									</xs:documentation>
+								</xs:annotation>
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:minLength value="0" />
+										<xs:maxLength value="20" />
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="RealRsv2">
+								<xs:annotation>
+									<xs:documentation>DECIMAL(19, 4)
+										实征废旧基金
+									</xs:documentation>
+								</xs:annotation>
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:minLength value="0" />
+										<xs:maxLength value="20" />
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

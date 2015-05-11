@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<project name="test1" default="jar" basedir="./..">
+	<property name="dist" value="dist" />
+	<property name="src" value="src" />
+
+	<target name="clean">
+		<mkdir dir="${dist}" />
+		<delete dir="${dist}/build" />
+	</target>
+
+	<target name="compile" depends="clean">
+		<mkdir dir="${dist}/build/classes" />
+		<javac srcdir="${src}/com/booleans" destdir="${dist}/build/classes" />
+	</target>
+
+	<target name="run" depends="compile">
+		<java classname="com.booleans.Test">
+			<classpath>
+				<pathelement path="${dist}/build/classes" />
+			</classpath>
+		</java>
+	</target>
+
+	<target name="jar" depends="run">
+		<jar destfile="${dist}/build/booleanTest.jar" basedir="${dist}/build/classes">
+			<manifest>
+				<attribute name="Main-class" value="com.booleans.Test" />
+			</manifest>
+		</jar>
+	</target>
+</project>
